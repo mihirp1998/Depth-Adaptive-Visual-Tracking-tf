@@ -12,21 +12,34 @@ The folllowing topics are covered by my project:
 - [x] **Readability**. The code is very clear,well documented and consistent.
 
 ## Model Keys
+ Model Structure
+ 
+- [x] Build Key & Search Inputs
+- [x] Build Vgg Nets for each 
+- [x] Build 5 Blocks of Cross-Corr & Flops for each
+- [x] Build Non-Diff Shallow Feature Extractor from Cross-Corr
+- [x] Build Confidence Score ~ Gfunction
+- [x] Build Intermediate Supervision Block Loss
+- [x] Build Budgeted Gates & Gate Loss
+- [x] Build Hard Gates for Evaluation 
 
-![GateLoss](imgs/gate_loss.png)
 
-
+Budgeted Gates implemented in model/compAdaptiveSiam/build_loss()
 ![BLockLoss](imgs/block_loss.png)
 
-
+Budgeted Gates implemented in model/compAdaptiveSiam/gStarFunc()
 ![BudgetedGate](imgs/budgeted_gating.png)
+
+Gate Loss implemented in model/compAdaptiveSiam/gateLoss
+![GateLoss](imgs/gate_loss.png)
 
 
 ## Prerequisite
 The main requirements can be installed by:
 ```bash
 pip install -r requirements.txt
-```
+
+``` 
 
 ## Data Collection and Preprocessing
 
