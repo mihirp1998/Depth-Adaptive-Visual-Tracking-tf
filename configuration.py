@@ -1,8 +1,3 @@
-#! /usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-# Copyright @ 2017 bily     Huazhong University of Science and Technology
-#
 
 """Default configurations of model specification, training and tracking
 
