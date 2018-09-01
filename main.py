@@ -89,10 +89,10 @@ def train(model_config, train_config):
     # you can rerun the trained model using the following snippet of code
 
 
-    sess.run(tf.global_variables_initializer())
-    new_saver = tf.train.import_meta_graph('entire_model/abcd.meta')
-    new_saver.restore(sess,tf.train.latest_checkpoint('entire_model/'))
-    print(sess.run(gated_loss))
+    # sess.run(tf.global_variables_initializer())
+    # new_saver = tf.train.import_meta_graph('entire_model/abcd.meta')
+    # new_saver.restore(sess,tf.train.latest_checkpoint('entire_model/'))
+    # print(sess.run(gated_loss))
     
 
     # saver
@@ -100,17 +100,18 @@ def train(model_config, train_config):
     sess.run(tf.global_variables_initializer())
     writer = tf.summary.FileWriter('./graphs', sess.graph)
     # fine tuning vgg weights then training soft gates and iterating over same process
-    for step in range(100):
+    for step in range(1):
 
-      for i in range(100):
+      for i in range(1):
         loss_val, _ = sess.run([vgg_loss,optimizer_op])
         print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
+        saver.save(sess,'pretrained/entire_model/model',global_step=step)  
 
-      for i in range(100):
+      for i in range(1):
         loss_val, _ = sess.run([gated_loss,optimize_gate_loss])
         print("\n\n total gated losss {} on epoch num {}  \n\n".format(loss_val/5,i))
 
-      saver.save(sess,'entire_model/abcd',global_step=step)  
+      saver.save(sess,'pretrained/entire_model/model',global_step=1000)  
 
 # function implementing hard gating using tf.cond over the above trained model
 def evaluate(model_config, train_config):
@@ -133,7 +134,7 @@ def evaluate(model_config, train_config):
       # model restored
       sess = tf.Session()
       sess.run(tf.global_variables_initializer())
-      new_saver = tf.train.import_meta_graph('pretrained/entire_model/abcd.meta')
+      new_saver = tf.train.import_meta_graph('pretrained/entire_model/model-1000.meta')
       new_saver.restore(sess,tf.train.latest_checkpoint('pretrained/entire_model/'))
       print("\nmodel restored\n")
       
