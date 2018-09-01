@@ -88,28 +88,3 @@ TRAIN_CONFIG = {
   # How many model checkpoints to keep. No limit if None.
   'max_checkpoints_to_keep': None,
 }
-
-TRACK_CONFIG = {
-  # Directory for saving log files during tracking.
-  'log_dir': osp.join(LOG_DIR, 'track_model_inference', RUN_NAME),
-
-  # Logging level of inference, use 1 for detailed inspection. 0 for speed.
-  'log_level': 0,
-
-  'x_image_size': 255,  # Search image size during tracking
-
-  # Configurations for upsampling score maps
-  'upsample_method': 'bicubic',
-  'upsample_factor': 16,
-
-  # Configurations for searching scales
-  'num_scales': 3,  # Number of scales to search
-  'scale_step': 1.0375,  # Scale changes between different scale search
-  'scale_damp': 0.59,  # Damping factor for scale update
-  'scale_penalty': 0.9745,  # Score penalty for scale change
-
-  # Configurations for penalizing large displacement from the center
-  'window_influence': 0.176,
-
-  'include_first': False, # If track the first frame
-}
