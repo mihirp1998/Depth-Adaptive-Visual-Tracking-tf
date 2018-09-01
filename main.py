@@ -28,7 +28,7 @@ def configurations():
   return model_config,train_config,track_config
 
 # function to train vgg weights and soft gates extractor weights
-def train(model_config, train_config, track_config):
+def train(model_config, train_config):
 
   print("running main")
 
@@ -89,10 +89,10 @@ def train(model_config, train_config, track_config):
     # you can rerun the trained model using the following snippet of code
 
 
-    # sess.run(tf.global_variables_initializer())
-    # new_saver = tf.train.import_meta_graph('entire_model/abcd.meta')
-    # new_saver.restore(sess,tf.train.latest_checkpoint('entire_model/'))
-    # print(sess.run(gated_loss))
+    sess.run(tf.global_variables_initializer())
+    new_saver = tf.train.import_meta_graph('entire_model/abcd.meta')
+    new_saver.restore(sess,tf.train.latest_checkpoint('entire_model/'))
+    print(sess.run(gated_loss))
     
 
     # saver
@@ -102,9 +102,9 @@ def train(model_config, train_config, track_config):
     # fine tuning vgg weights then training soft gates and iterating over same process
     for step in range(100):
 
-      for i in range(100):
-        loss_val, _ = sess.run([vgg_loss,optimizer_op])
-        print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
+      # for i in range(100):
+      #   loss_val, _ = sess.run([vgg_loss,optimizer_op])
+      #   print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
 
       for i in range(100):
         loss_val, _ = sess.run([gated_loss,optimize_gate_loss])
@@ -113,7 +113,7 @@ def train(model_config, train_config, track_config):
       saver.save(sess,'entire_model/abcd',global_step=step)  
 
 # function implementing hard gating using tf.cond over the above trained model
-def evaluate(model_config, train_config, track_config):
+def evaluate(model_config, train_config):
 
     # seeds setter
     random.seed(train_config['seed'])
@@ -146,9 +146,9 @@ if __name__ == "__main__":
   if (len(sys.argv) ==2):
     main_c,train_c,track_c = configurations()
     if sys.argv[1] =="train":
-      train(main_c,train_c,track_c)
+      train(main_c,train_c)
     elif sys.argv[1] =="eval":
-      evaluate(main_c,train_c,track_c)
+      evaluate(main_c,train_c)
 
   else:
     print("Argument missing")  
