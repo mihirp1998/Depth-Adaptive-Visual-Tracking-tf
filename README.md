@@ -23,7 +23,7 @@ The folllowing topics are covered by my project:
 - [x] Build Budgeted Gates & Gate Loss
 - [x] Build Hard Gates for Evaluation 
 
-dsfalkjfalsk
+Block Loss is implemented in model/compAdaptiveSiam/block_loss().This loss also results in exploding Gradients for which to prevent there is L2 Regularization and Gradient Clipping Implemented 
 
 
 ![BLockLoss](imgs/block_loss.png)
@@ -33,16 +33,11 @@ Budgeted Gates implemented in model/compAdaptiveSiam/gStarFunc()
 
 ![BudgetedGate](imgs/budgeted_gating.png)
 
-sdfasdfasf
-
+Gate Loss implemented in model/compAdaptiveSiam/gateLoss
 
 ![GateLoss](imgs/gate_loss.png)
 
 
-
-Budgeted Gates implemented in model/compAdaptiveSiam/gStarFunc()
-
-Gate Loss implemented in model/compAdaptiveSiam/gateLoss
 
 ## Prerequisite
 The main requirements can be installed by:
