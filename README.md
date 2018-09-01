@@ -13,7 +13,13 @@ The folllowing topics are covered by my project:
 
 ## Model Keys
 
-![GateLoss](img/gate_loss.png)
+![GateLoss](imgs/gate_loss.png)
+
+
+![BLockLoss](imgs/block_loss.png)
+
+
+![BudgetedGate](imgs/budgeted_gating.png)
 
 
 ## Prerequisite
