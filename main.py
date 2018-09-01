@@ -102,9 +102,9 @@ def train(model_config, train_config, track_config):
     # fine tuning vgg weights then training soft gates and iterating over same process
     for step in range(100):
 
-      # for i in range(100):
-      #   loss_val, _ = sess.run([vgg_loss,optimizer_op])
-      #   print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
+      for i in range(100):
+        loss_val, _ = sess.run([vgg_loss,optimizer_op])
+        print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
 
       for i in range(100):
         loss_val, _ = sess.run([gated_loss,optimize_gate_loss])
