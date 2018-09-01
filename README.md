@@ -97,4 +97,4 @@ python main.py eval
 If you are training from beginning then use the vgg pretrained model provided here [link](https://mega.nz/#!xZ8glS6J!MAnE91ND_WyfZ_8mvkuSa2YcA7q-1ehfSm-Q1fxOvvs)
 
 
-The pretrained model for VggNet and Gates trained by me is [here]()
+The pretrained model for VggNet and Gates trained by me is [here](https://drive.google.com/open?id=1_0y1d8pAoOyHpePowibxIJydBhKrNZox)
