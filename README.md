@@ -11,6 +11,14 @@ The folllowing topics are covered by my project:
 - [x] **Hard Gating for Evaluation**. Hard gating which stops the computation when confidence score exceeds threshold.
 - [x] **Readability**. The code is very clear,well documented and consistent.
 
+<pre>Search Frame&nbsp;&nbsp                                                   Cross Correlation Frame</pre>
+
+<pre><img src="imgs/search.jpg" width="300">                               <img src="imgs/gt15.jpg" width="100"></pre>
+
+
+
+
+
 ## Model Keys
  **Model Structure**
  
