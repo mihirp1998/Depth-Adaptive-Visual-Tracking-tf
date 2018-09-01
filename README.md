@@ -13,7 +13,7 @@ The folllowing topics are covered by my project:
 
 ## Model Keys
 
-
+![GateLoss](img/gate_loss.png)
 
 
 ## Prerequisite
