@@ -27,7 +27,7 @@ class Vgg19:
         with tf.variable_scope("siamese", reuse=tf.AUTO_REUSE):
 
             
-            self.conv1_1,flops1_1 = self.conv_layer(rgb_scaled, 3, 64, "conv1_1")
+            self.conv1_1,flops1_1 = self.conv_layer(rgb, 3, 64, "conv1_1")
             self.conv1_2,flops1_2 = self.conv_layer(self.conv1_1, 64, 64, "conv1_2")
             self.flops1 = flops1_1 + flops1_2
             self.pool1 = self.max_pool(self.conv1_2, 'pool1')

@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import vgg19_trainable as vgg19
+from model import vgg19_trainable as vgg19
 
 import functools
 import numpy as np
@@ -42,7 +42,7 @@ class CompSiamModel:
 
 
 		# code used to get the data from pickled files represents the first frame and the next fram
-	def get_inputs(self):
+	def build_inputs(self):
 		if self.mode in ['train', 'validation']:
 			with tf.device("/cpu:0"):  # Put data loading and preprocessing in CPU is substantially faster
 				self.dataloader = DataLoader(self.data_config, self.is_training())
@@ -303,7 +303,8 @@ class CompSiamModel:
 			computational_loss += p_table[i]* gStarVal
 		
 		# lamda ratio between track loss and comp loss
-		self.total_gate_loss = tracking_loss + lamda*computational_loss	
+		total_gate_loss = tracking_loss + lamda*computational_loss	
+		self.total_gate_loss = tf.reduce_mean(total_gate_loss)
 		print(self.total_gate_loss)	
 
 		# Intermediate Supervision loss for all blocks .. Also causes Exploding gradient

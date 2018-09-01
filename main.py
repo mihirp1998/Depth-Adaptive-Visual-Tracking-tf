@@ -13,6 +13,7 @@ import numpy as np
 import tensorflow as tf
 
 import configuration
+import sys
 
 from model import compAdaptiveSiam
 from utils.misc_utils import auto_select_gpu, mkdir_p, save_cfgs
@@ -97,13 +98,13 @@ def train(model_config, train_config, track_config):
     # saver
     saver = tf.train.Saver(max_to_keep=4,keep_checkpoint_every_n_hours=2)  
     sess.run(tf.global_variables_initializer())
-
+    writer = tf.summary.FileWriter('./graphs', sess.graph)
     # fine tuning vgg weights then training soft gates and iterating over same process
     for step in range(100):
 
-      for i in range(100):
-        loss_val, _ = sess.run([vgg_loss,optimizer_op])
-        print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
+      # for i in range(100):
+      #   loss_val, _ = sess.run([vgg_loss,optimizer_op])
+      #   print("\n\n total avg vgg losss {} on epoch num {}  \n\n".format(loss_val/5,i))
 
       for i in range(100):
         loss_val, _ = sess.run([gated_loss,optimize_gate_loss])
@@ -112,7 +113,7 @@ def train(model_config, train_config, track_config):
       saver.save(sess,'entire_model/abcd',global_step=step)  
 
 # function implementing hard gating using tf.cond over the above trained model
-def validate(model_config, train_config, track_config):
+def evaluate(model_config, train_config, track_config):
 
     # seeds setter
     random.seed(train_config['seed'])
@@ -142,5 +143,12 @@ def validate(model_config, train_config, track_config):
 
 
 if __name__ == "__main__":
-  main_c,train_c,track_c = configurations()
-  train(main_c,train_c,track_c)
+  if (len(sys.argv) ==2):
+    main_c,train_c,track_c = configurations()
+    if sys.argv[1] =="train":
+      train(main_c,train_c,track_c)
+    elif sys.argv[1] =="eval":
+      evaluate(main_c,train_c,track_c)
+
+  else:
+    print("Argument missing")  
