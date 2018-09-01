@@ -12,7 +12,7 @@ The folllowing topics are covered by my project:
 - [x] **Readability**. The code is very clear,well documented and consistent.
 
 ## Model Keys
- Model Structure
+ **Model Structure**
  
 - [x] Build Key & Search Inputs
 - [x] Build Vgg Nets for each 
