@@ -39,7 +39,7 @@ Gate Loss implemented in model/compAdaptiveSiam/gateLoss
 
 Cropped Section of TensorBoard Graph
 
-![Tensorboard](imgs/tensorboard-cropped.png)
+<img src="imgs/tensorboard-cropped.png" width="1000">
 
 ## Prerequisite
 The main requirements can be installed by:
